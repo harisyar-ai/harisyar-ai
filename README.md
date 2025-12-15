@@ -31,13 +31,13 @@ When I'm not coding, you'll find me lost in a good book 📚 or experimenting wi
 
 ## 💻 Tech Stack
 
-[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)]
-[![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)]
-[![OpenCV](https://img.shields.io/badge/OpenCV-5CACEE?style=for-the-badge&logo=opencv&logoColor=white)]
-[![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-Orange?style=for-the-badge&logo=scikit-learn&logoColor=white)]
-[![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)]
-[![Streamlit](https://img.shields.io/badge/Streamlit-Red?style=for-the-badge&logo=streamlit&logoColor=white)]
-[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)]
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-5CACEE?style=for-the-badge&logo=opencv&logoColor=white)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-Orange?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-Red?style=for-the-badge&logo=streamlit&logoColor=white)
+![Hugging Face](https://img.shields.io/badge/Hugging%20Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)
 
 ## 📊 GitHub Stats
 
