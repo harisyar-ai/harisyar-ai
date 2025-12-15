@@ -1,7 +1,7 @@
 # 👋 Hi, I'm Muhammad Haris Afridi
 
 <div align="center">
-  <img src="my.gif" alt="Building AI" width="300"/>
+  <img src="my.gif" alt="Building AI" width="700"/>
 </div>
 
 <div align="center">
