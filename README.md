@@ -1,17 +1,14 @@
 # 👋 Hi, I'm Muhammad Haris Afridi
 
 <div align="center">
-  <img src="my.gif" alt="Haris Building AI" width="700"/>
+  <img src="my.gif" alt="Haris Building AI" width="900"/>
 </div>
 
 <div align="center">
 
 [![Deep Learning](https://img.shields.io/badge/Deep%20Learning-FF6B6B?style=for-the-badge&logo=tensorflow&logoColor=white)](https://pytorch.org)
-[![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org)
 [![Computer Vision](https://img.shields.io/badge/Computer%20Vision-FFD700?style=for-the-badge&logo=opencv&logoColor=black)](https://opencv.org)
-[![NLP](https://img.shields.io/badge/NLP-FF4B4B?style=for-the-badge&logo=natural-language-processing&logoColor=white)](https://huggingface.co)
-[![Streamlit](https://img.shields.io/badge/Streamlit-Red?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
-[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Natural Language Processing](https://img.shields.io/badge/NLP-FF4B4B?style=for-the-badge&logo=natural-language-processing&logoColor=white)](https://huggingface.co)
 
 </div>
 
