@@ -1,14 +1,14 @@
 # 👋 Hi, I'm Muhammad Haris Afridi
 
 <div align="center">
-  <img src="my.gif" alt="Haris Building AI" width="900"/>
+  <img src="my.gif" alt="Haris Building AI" width="700"/>
 </div>
 
 <div align="center">
 
 [![Deep Learning](https://img.shields.io/badge/Deep%20Learning-FF6B6B?style=for-the-badge&logo=tensorflow&logoColor=white)](https://pytorch.org)
 [![Computer Vision](https://img.shields.io/badge/Computer%20Vision-FFD700?style=for-the-badge&logo=opencv&logoColor=black)](https://opencv.org)
-[![Natural Language Processing](https://img.shields.io/badge/NLP-FF4B4B?style=for-the-badge&logo=natural-language-processing&logoColor=white)](https://huggingface.co)
+[![NLP](https://img.shields.io/badge/NLP-FF4B4B?style=for-the-badge&logo=natural-language-processing&logoColor=white)](https://huggingface.co)
 
 </div>
 
