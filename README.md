@@ -40,7 +40,6 @@ When I'm not coding, you'll find me lost in a good book 📚 or experimenting wi
 
 <div align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=harisyar-ai&show_icons=true&theme=dark&hide_border=true" alt="Haris's GitHub Stats"/>
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=harisyar-ai&theme=dark&hide_border=true" alt="GitHub Streak"/>
 </div>
 
 ## 🌟 Featured Projects
