@@ -6,7 +6,7 @@
 
 <div align="center">
 
-[![Artificial Intelligence](https://img.shields.io/badge/Artificial%20Intelligence-6A0DAD?style=for-the-badge&logo=openai&logoColor=white)]
+![Artificial Intelligence](https://img.shields.io/badge/Artificial%20Intelligence-6A0DAD?style=for-the-badge&logo=openai&logoColor=white)
 [![Deep Learning](https://img.shields.io/badge/Deep%20Learning-FF6B6B?style=for-the-badge&logo=tensorflow&logoColor=white)]
 [![Computer Vision](https://img.shields.io/badge/Computer%20Vision-FFD700?style=for-the-badge&logo=opencv&logoColor=black)]
 [![NLP](https://img.shields.io/badge/NLP-FF4B4B?style=for-the-badge&logo=huggingface&logoColor=white)]
