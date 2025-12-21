@@ -48,6 +48,8 @@ When I'm not coding, you'll find me lost in a good book or experimenting with **
   <img src="https://github-readme-stats.vercel.app/api?username=harisyar-ai&show_icons=true&theme=dark&hide_border=true" alt="Haris's GitHub Stats"/>
 </div>
 
+![Profile Views](https://komarev.com/ghpvc/?username=harisyar-ai&style=for-the-badge)
+
 ## Featured Projects
 
 - **[Nova Books Recommender](https://github.com/harisyar-ai/nova-books-recommender)**  
