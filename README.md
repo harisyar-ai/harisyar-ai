@@ -6,16 +6,15 @@
 
 <div align="center">
 
-![Artificial Intelligence](https://img.shields.io/badge/Artificial%20Intelligence-6A0DAD?style=for-the-badge&logo=openai&logoColor=white)
-[![Deep Learning](https://img.shields.io/badge/Deep%20Learning-FF6B6B?style=for-the-badge&logo=tensorflow&logoColor=white)]
-[![Computer Vision](https://img.shields.io/badge/Computer%20Vision-FFD700?style=for-the-badge&logo=opencv&logoColor=black)]
-[![NLP](https://img.shields.io/badge/NLP-FF4B4B?style=for-the-badge&logo=huggingface&logoColor=white)]
+![Deep Learning](https://img.shields.io/badge/Deep%20Learning-FF6B6B?style=for-the-badge&logo=tensorflow&logoColor=white)
+![Computer Vision](https://img.shields.io/badge/Computer%20Vision-FFD700?style=for-the-badge&logo=opencv&logoColor=black)
+![NLP](https://img.shields.io/badge/NLP-FF4B4B?style=for-the-badge&logo=huggingface&logoColor=white)
 
 </div>
 
 ## About Me
 
-Passionate **self-taught AI Engineer** and **book lover** from Pakistan  
+Passionate **self-taught AI Engineer** and from Pakistan  
 Building intelligent apps with **Artificial Intelligence**, **Deep Learning**, **NLP**, and **Digital Image Processing** — turning ideas into real-world tools.
 
 When I'm not coding, you'll find me lost in a good book or experimenting with **TensorFlow**, **Keras**, and image processing projects.
@@ -27,6 +26,11 @@ When I'm not coding, you'll find me lost in a good book or experimenting with **
 - Currently diving deeper into advanced DL (Transformers, CNNs, GANs)  
 - Creator of **Nova Books** — live NLP-powered book recommender
 
+## Current Position 
+
+- Student at **Agriculture university of Peshawar**, Pursuing Bachelor in Artificial intelligence (2023-2027).
+- Research Assistant at the Digital **Image Processing (DIP) Lab**, Islamia College Peshawar.
+  
 ## Tech Stack
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
