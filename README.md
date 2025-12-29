@@ -14,7 +14,7 @@
 
 ## About Me
 
-Passionate **self-taught AI Engineer** and from Pakistan  
+Passionate **self-taught AI Engineer** & 
 Building intelligent apps with **Artificial Intelligence**, **Deep Learning**, **NLP**, and **Digital Image Processing** — turning ideas into real-world tools.
 
 When I'm not coding, you'll find me lost in a good book or experimenting with **TensorFlow**, **Keras**, and image processing projects.
