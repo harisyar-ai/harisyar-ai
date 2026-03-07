@@ -7,6 +7,8 @@
 <div align="center">
 
 ![AI](https://img.shields.io/badge/AI-FF6B6B?style=for-the-badge\&logo=tensorflow\&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![AI](https://img.shields.io/badge/AI-FF6B6B?style=for-the-badge&logo=tensorflow&logoColor=white)
 ![Deep Learning](https://img.shields.io/badge/Deep%20Learning-FF6B6B?style=for-the-badge&logo=tensorflow&logoColor=white)
 ![Computer Vision](https://img.shields.io/badge/Computer%20Vision-FFD700?style=for-the-badge&logo=opencv&logoColor=black)
 ![NLP](https://img.shields.io/badge/NLP-FF4B4B?style=for-the-badge&logo=huggingface&logoColor=white)
@@ -42,10 +44,15 @@ When I'm not coding, you'll find me lost in a good book or experimenting with **
 ## Tech Stack
 
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
 ![OpenCV](https://img.shields.io/badge/OpenCV-5CACEE?style=for-the-badge&logo=opencv&logoColor=white)
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-Orange?style=for-the-badge&logo=scikit-learn&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=plotly&logoColor=white)
+![Seaborn](https://img.shields.io/badge/Seaborn-4C72B0?style=for-the-badge&logo=python&logoColor=white)
+![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-Red?style=for-the-badge&logo=streamlit&logoColor=white)
 ![Hugging Face](https://img.shields.io/badge/Hugging%20Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)
 
@@ -55,9 +62,22 @@ When I'm not coding, you'll find me lost in a good book or experimenting with **
 
 ---
 
+## Projects & Streamlit Deployments
+
+| Project | Type | Streamlit Link |
+|---|---|---|
+| Nova Books Recommender | NLP / Recommendation | [Open App](https://nova-books-recommender.streamlit.app/) |
+| Pakistani Car Price Predictor | Regression / Tabular ML | [Open App](https://pakistani-car-price-predictor.streamlit.app/) |
+| Medical Insurance Cost Prediction | Regression / Feature Engineering | [Open App](https://medical-insurance-cost-prediction-system.streamlit.app/) |
+| Job Salary Prediction | Regression / Benchmarking | [Open App](https://job-salary-prediction.streamlit.app/) |
+| Breast Cancer Prediction | Classification / Healthcare AI | *Not deployed yet* |
+
+---
+
 ## Featured Projects
 
 ###  Nova Books Recommender
+### Nova Books Recommender
 🔗 [Live App](https://nova-books-recommender.streamlit.app/)
 
 Content-based book recommendation system built with **TF-IDF & cosine similarity**. Analyzes title, author, description, and genres across 10,000 books to suggest meaningful matches — no ratings or user history needed. Features a custom cover image scraper and a beautiful, mobile-responsive Streamlit UI.
@@ -65,6 +85,7 @@ Content-based book recommendation system built with **TF-IDF & cosine similarity
 ---
 
 ###  Pakistani Car Price Predictor
+### Pakistani Car Price Predictor
 🔗 [Live App](https://pakistani-car-price-predictor.streamlit.app/)
 
 End-to-end ML pipeline trained on 5,000+ real Pakistani car listings scraped from PakWheels. Uses **LightGBM** with 19 engineered features (brand tier, hybrid/EV flag, city premium, mileage per year & more) achieving **97.48% R²**. Includes SHAP analysis for feature explainability.
@@ -72,6 +93,7 @@ End-to-end ML pipeline trained on 5,000+ real Pakistani car listings scraped fro
 ---
 
 ###  Medical Insurance Cost Prediction
+### Medical Insurance Cost Prediction
 🔗 [Live App](https://medical-insurance-cost-prediction-system.streamlit.app/)
 
 Supervised regression system that estimates annual health insurance charges based on age, BMI, smoking status, region, and family size. Applied extensive **feature engineering** (polynomial features, interaction terms, log transformation) and compared 15+ models — **Random Forest** won with **R² = 0.9246**.
@@ -79,9 +101,17 @@ Supervised regression system that estimates annual health insurance charges base
 ---
 
 ###  Job Salary Prediction
+### Job Salary Prediction
 🔗 [Live App](https://job-salary-prediction.streamlit.app/)
 
 ML regression app that estimates annual salaries based on education, experience, job title, location, and gender. Benchmarked 11 models with full preprocessing pipelines — **Gradient Boosting** achieved the best performance with **R² = 0.8549**. Deployed interactively via Streamlit.
+
+---
+
+### Breast Cancer Prediction
+Not deployed on Streamlit yet.
+
+Machine learning classification project for breast cancer diagnosis. This project is included in my portfolio, but the deployment link is intentionally omitted for now.
 
 ---
 
