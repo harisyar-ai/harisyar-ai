@@ -76,7 +76,6 @@ When I'm not coding, you'll find me lost in a good book or experimenting with **
 
 ## Featured Projects
 
-###  Nova Books Recommender
 ### Nova Books Recommender
 🔗 [Live App](https://nova-books-recommender.streamlit.app/)
 
@@ -84,7 +83,6 @@ Content-based book recommendation system built with **TF-IDF & cosine similarity
 
 ---
 
-###  Pakistani Car Price Predictor
 ### Pakistani Car Price Predictor
 🔗 [Live App](https://pakistani-car-price-predictor.streamlit.app/)
 
@@ -92,7 +90,6 @@ End-to-end ML pipeline trained on 5,000+ real Pakistani car listings scraped fro
 
 ---
 
-###  Medical Insurance Cost Prediction
 ### Medical Insurance Cost Prediction
 🔗 [Live App](https://medical-insurance-cost-prediction-system.streamlit.app/)
 
@@ -100,7 +97,6 @@ Supervised regression system that estimates annual health insurance charges base
 
 ---
 
-###  Job Salary Prediction
 ### Job Salary Prediction
 🔗 [Live App](https://job-salary-prediction.streamlit.app/)
 
