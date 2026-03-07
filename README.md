@@ -59,59 +59,35 @@ When I'm not coding, you'll find me lost in a good book or experimenting with **
 ## Featured Projects & Streamlit Deployment
 
 ### Nova Books Recommender
-<a href="https://nova-books-recommender.streamlit.app/" 
-   target="_blank" 
-   style="display:inline-block; background-color:#FF5722; color:white; 
-          padding:8px 16px; text-align:center; border-radius:5px; text-decoration:none; font-weight:bold;">
-   Open App
-</a>
+[![Open App](https://img.shields.io/badge/Open_App-FF5722?style=for-the-badge&logo=appveyor&logoColor=white)](https://nova-books-recommender.streamlit.app/)
 
 Content-based book recommendation system built with **TF-IDF & cosine similarity**. Analyzes title, author, description, and genres across 10,000 books to suggest meaningful matches — no ratings or user history needed. Features a custom cover image scraper and a beautiful, mobile-responsive Streamlit UI.
 
 ---
 
 ### Pakistani Car Price Predictor
-<a href="https://pakistani-car-price-predictor.streamlit.app/" 
-   target="_blank" 
-   style="display:inline-block; background-color:#3F51B5; color:white; 
-          padding:8px 16px; text-align:center; border-radius:5px; text-decoration:none; font-weight:bold;">
-   Open App
-</a>
+[![Open App](https://img.shields.io/badge/Open_App-3F51B5?style=for-the-badge&logo=appveyor&logoColor=white)](https://pakistani-car-price-predictor.streamlit.app/)
 
 End-to-end ML pipeline trained on 5,000+ real Pakistani car listings scraped from PakWheels. Uses **LightGBM** with 19 engineered features (brand tier, hybrid/EV flag, city premium, mileage per year & more) achieving **97.48% R²**. Includes SHAP analysis for feature explainability.
 
 ---
 
 ### Medical Insurance Cost Prediction
-<a href="https://medical-insurance-cost-prediction-system.streamlit.app/" 
-   target="_blank" 
-   style="display:inline-block; background-color:#4CAF50; color:white; 
-          padding:8px 16px; text-align:center; border-radius:5px; text-decoration:none; font-weight:bold;">
-   Open App
-</a>
+[![Open App](https://img.shields.io/badge/Open_App-4CAF50?style=for-the-badge&logo=appveyor&logoColor=white)](https://medical-insurance-cost-prediction-system.streamlit.app/)
 
 Supervised regression system that estimates annual health insurance charges based on age, BMI, smoking status, region, and family size. Applied extensive **feature engineering** (polynomial features, interaction terms, log transformation) and compared 15+ models — **Random Forest** won with **R² = 0.9246**.
 
 ---
 
 ### Job Salary Prediction
-<a href="https://job-salary-prediction.streamlit.app/" 
-   target="_blank" 
-   style="display:inline-block; background-color:#009688; color:white; 
-          padding:8px 16px; text-align:center; border-radius:5px; text-decoration:none; font-weight:bold;">
-   Open App
-</a>
+[![Open App](https://img.shields.io/badge/Open_App-009688?style=for-the-badge&logo=appveyor&logoColor=white)](https://job-salary-prediction.streamlit.app/)
 
 ML regression app that estimates annual salaries based on education, experience, job title, location, and gender. Benchmarked 11 models with full preprocessing pipelines — **Gradient Boosting** achieved the best performance with **R² = 0.8549**. Deployed interactively via Streamlit.
 
 ---
 
 ### Breast Cancer Prediction
-<a href="#" 
-   style="display:inline-block; background-color:#9E9E9E; color:white; 
-          padding:8px 16px; text-align:center; border-radius:5px; text-decoration:none; font-weight:bold; cursor:not-allowed;">
-   Not Deployed Yet
-</a>
+[![Not Deployed Yet](https://img.shields.io/badge/Not_Deployed_Yet-9E9E9E?style=for-the-badge)](#)
 
 Machine learning classification project for breast cancer diagnosis. This project is included in my portfolio, but the deployment link is intentionally omitted for now.
 ## My Socials
