@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Haris Afridi — Developer & AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --navy:    #0a2d5e;
+    --blue:    #1a56a0;
+    --sky:     #2176c7;
+    --forest:  #1a7a4a;
+    --mint:    #22c475;
+    --gold:    #f5a623;
+    --cream:   #f7f4ef;
+    --ink:     #0d1117;
+    --muted:   #6b7280;
+    --border:  rgba(26,86,160,0.15);
+    --card-bg: rgba(255,255,255,0.72);
+    --radius:  14px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 60px;
+    background: rgba(247,244,239,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.1rem;
+    color: var(--navy);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: var(--mint); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    text-decoration: none; font-size: 0.85rem; font-weight: 500;
+    color: var(--muted); transition: color 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .nav-links a:hover { color: var(--blue); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; place-items: center;
+    position: relative; overflow: hidden;
+    padding: 120px 60px 80px;
+  }
+
+  /* Geometric background shapes */
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    overflow: hidden;
+  }
+  .hero-blob {
+    position: absolute; border-radius: 50%; filter: blur(70px);
+  }
+  .blob-1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(26,86,160,0.18) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    animation: float1 8s ease-in-out infinite;
+  }
+  .blob-2 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(26,122,74,0.15) 0%, transparent 70%);
+    bottom: 0; left: -80px;
+    animation: float2 10s ease-in-out infinite;
+  }
+  .blob-3 {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(245,166,35,0.12) 0%, transparent 70%);
+    top: 40%; left: 50%;
+    animation: float3 7s ease-in-out infinite;
+  }
+  @keyframes float1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-30px,40px)} }
+  @keyframes float2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,-30px)} }
+  @keyframes float3 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-20px,20px)} }
+
+  /* Grid lines decoration */
+  .hero-grid {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(26,86,160,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,86,160,0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-inner {
+    position: relative; z-index: 1;
+    max-width: 900px; width: 100%;
+  }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(26,86,160,0.08);
+    border: 1px solid rgba(26,86,160,0.2);
+    border-radius: 100px;
+    padding: 6px 16px; margin-bottom: 28px;
+    font-size: 0.78rem; font-weight: 500; color: var(--blue);
+    letter-spacing: 0.5px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-tag .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--mint);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -2px;
+    color: var(--navy);
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-name .accent { color: var(--blue); }
+  .hero-name .accent2 { color: var(--forest); }
+
+  .hero-title {
+    margin-top: 18px;
+    font-size: 1.15rem; font-weight: 300; color: var(--muted);
+    line-height: 1.7;
+    max-width: 560px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-title strong { color: var(--blue); font-weight: 500; }
+
+  .hero-cta {
+    margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 26px; border-radius: 100px;
+    font-size: 0.88rem; font-weight: 600; text-decoration: none;
+    transition: all 0.2s; cursor: pointer; border: none;
+  }
+  .btn-primary {
+    background: var(--navy); color: white;
+    box-shadow: 0 4px 20px rgba(10,45,94,0.25);
+  }
+  .btn-primary:hover { background: var(--blue); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(10,45,94,0.3); }
+  .btn-outline {
+    background: transparent;
+    border: 1.5px solid rgba(26,86,160,0.35);
+    color: var(--blue);
+  }
+  .btn-outline:hover { background: rgba(26,86,160,0.06); transform: translateY(-2px); }
+
+  .hero-stats {
+    margin-top: 60px; display: flex; gap: 40px; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .stat-item { display: flex; flex-direction: column; gap: 4px; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem; font-weight: 800; color: var(--navy);
+    line-height: 1;
+  }
+  .stat-num span { color: var(--mint); }
+  .stat-label { font-size: 0.78rem; color: var(--muted); font-weight: 400; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTION SHARED ── */
+  section { position: relative; z-index: 1; padding: 80px 60px; }
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 2px;
+    color: var(--mint); text-transform: uppercase; margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 800; color: var(--navy);
+    letter-spacing: -1px; line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .section-sub {
+    font-size: 1rem; color: var(--muted); max-width: 540px;
+    line-height: 1.7; margin-bottom: 50px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* ── ABOUT ── */
+  .about-section { background: white; }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .about-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+  }
+  .about-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+  }
+  .about-card h3 i { color: var(--blue); font-size: 0.9rem; }
+  .about-card p { font-size: 0.9rem; line-height: 1.8; color: #374151; }
+  .about-cards { display: flex; flex-direction: column; gap: 16px; }
+
+  .about-avatar-wrap {
+    display: flex; flex-direction: column; gap: 20px; align-items: center;
+  }
+  .avatar-ring {
+    width: clamp(220px, 24vw, 300px); height: clamp(220px, 24vw, 300px); border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy), var(--blue), var(--forest));
+    padding: 4px;
+    box-shadow: 0 12px 40px rgba(10,45,94,0.25);
+  }
+  .avatar-inner {
+    width: 100%; height: 100%; border-radius: 50%;
+    background: linear-gradient(135deg, #1a56a0, #0f3d7a);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .avatar-inner img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .about-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 5px 13px; border-radius: 100px;
+    font-size: 0.74rem; font-weight: 600;
+    background: rgba(26,86,160,0.08);
+    border: 1px solid rgba(26,86,160,0.18);
+    color: var(--blue);
+  }
+  .badge.green { background: rgba(26,122,74,0.08); border-color: rgba(26,122,74,0.2); color: var(--forest); }
+  .badge.gold  { background: rgba(245,166,35,0.1);  border-color: rgba(245,166,35,0.25); color: #92650a; }
+
+  /* ── JOURNEY / FULL STACK ── */
+  .journey-section {
+    background: var(--navy);
+    color: white;
+  }
+  .journey-section .section-title { color: white; }
+  .journey-section .section-sub { color: rgba(255,255,255,0.6); }
+  .journey-section .section-label { color: var(--mint); }
+
+  .timeline {
+    position: relative; padding-left: 32px;
+    max-width: 720px;
+  }
+  .timeline::before {
+    content: ''; position: absolute; left: 10px; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--mint), var(--blue), transparent);
+  }
+  .tl-item {
+    position: relative; margin-bottom: 36px;
+  }
+  .tl-dot {
+    position: absolute; left: -28px; top: 4px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--mint); border: 3px solid var(--navy);
+    box-shadow: 0 0 0 3px rgba(34,196,117,0.25);
+  }
+  .tl-phase {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; font-weight: 600; color: var(--mint);
+    letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 5px;
+  }
+  .tl-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem; font-weight: 700; color: white; margin-bottom: 6px;
+  }
+  .tl-desc {
+    font-size: 0.87rem; color: rgba(255,255,255,0.65); line-height: 1.7;
+  }
+
+  /* ── SKILLS ── */
+  .skills-section { background: var(--cream); }
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .skill-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(10,45,94,0.1); }
+  .skill-card-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+  }
+  .skill-icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .skill-icon.blue-bg  { background: rgba(26,86,160,0.1); color: var(--blue); }
+  .skill-icon.green-bg { background: rgba(26,122,74,0.1); color: var(--forest); }
+  .skill-icon.gold-bg  { background: rgba(245,166,35,0.12); color: #92650a; }
+  .skill-icon.teal-bg  { background: rgba(20,170,160,0.1); color: #0d9488; }
+  .skill-card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem; font-weight: 700; color: var(--navy);
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+  .skill-tag {
+    font-size: 0.74rem; padding: 4px 11px; border-radius: 100px;
+    background: #f1f5f9; color: #475569; font-weight: 500;
+    border: 1px solid #e2e8f0;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-section { background: white; }
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+  }
+  .project-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: white;
+    display: flex; flex-direction: column;
+  }
+  .project-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(10,45,94,0.12); }
+  .project-card.featured {
+    grid-column: 1 / -1;
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .project-header {
+    padding: 24px 24px 0;
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+  }
+  .project-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 100px;
+  }
+  .type-gov   { background: rgba(10,45,94,0.08); color: var(--navy); }
+  .type-ml    { background: rgba(26,86,160,0.08); color: var(--blue); }
+  .type-nlp   { background: rgba(26,122,74,0.08); color: var(--forest); }
+  .type-cv    { background: rgba(245,166,35,0.1); color: #92650a; }
+  .project-links { display: flex; gap: 8px; }
+  .proj-link {
+    width: 30px; height: 30px; border-radius: 8px;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted); font-size: 0.75rem; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .proj-link:hover { background: var(--blue); color: white; border-color: var(--blue); }
+  .project-body { padding: 20px 24px 24px; flex: 1; display: flex; flex-direction: column; }
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 10px; line-height: 1.3;
+  }
+  .project-desc {
+    font-size: 0.86rem; color: var(--muted);
+    line-height: 1.75; flex: 1; margin-bottom: 18px;
+  }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; }
+  .project-tag {
+    font-size: 0.72rem; padding: 3px 10px; border-radius: 100px;
+    font-weight: 600; font-family: 'JetBrains Mono', monospace;
+  }
+  .project-tag.blue  { background: rgba(26,86,160,0.08); color: var(--blue); }
+  .project-tag.green { background: rgba(26,122,74,0.08); color: var(--forest); }
+  .project-tag.gold  { background: rgba(245,166,35,0.1); color: #92650a; }
+  .project-tag.red   { background: rgba(220,38,38,0.07); color: #dc2626; }
+  .project-metric {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 0.78rem; font-weight: 700;
+    color: var(--forest); margin-top: 8px;
+  }
+  .project-metric i { font-size: 0.7rem; }
+
+  /* Featured project banner */
+  .feat-banner {
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    padding: 40px;
+    display: flex; flex-direction: column; justify-content: center;
+    color: white;
+  }
+  .feat-banner .feat-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px; padding: 5px 14px; margin-bottom: 20px;
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+    width: fit-content;
+  }
+  .feat-banner h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.7rem; font-weight: 800; line-height: 1.2; margin-bottom: 14px;
+  }
+  .feat-banner p { font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 20px; }
+  .feat-highlights { display: flex; flex-direction: column; gap: 8px; }
+  .feat-hl {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 0.82rem; color: rgba(255,255,255,0.85); line-height: 1.5;
+  }
+  .feat-hl i { color: var(--mint); margin-top: 3px; font-size: 0.7rem; flex-shrink: 0; }
+
+  /* ── CURRENT & GOALS ── */
+  .goals-section { background: var(--cream); }
+  .goals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .goal-card {
+    background: white; border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px;
+    transition: transform 0.2s;
+  }
+  .goal-card:hover { transform: translateY(-3px); }
+  .goal-card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .label-now  { color: var(--blue); }
+  .label-next { color: var(--forest); }
+  .goal-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 16px;
+  }
+  .goal-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .goal-list li {
+    font-size: 0.86rem; color: #374151; line-height: 1.6;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .goal-list li i { color: var(--mint); margin-top: 3px; font-size: 0.75rem; flex-shrink: 0; }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--navy); color: white;
+    text-align: center;
+  }
+  .contact-section .section-title { color: white; }
+  .contact-section .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto 40px; }
+  .contact-links {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  }
+  .contact-card {
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius);
+    padding: 16px 24px;
+    text-decoration: none; color: white;
+    font-size: 0.88rem; font-weight: 500;
+    transition: all 0.2s;
+    min-width: 200px; justify-content: center;
+  }
+  .contact-card:hover {
+    background: rgba(255,255,255,0.14);
+    transform: translateY(-3px);
+    border-color: var(--mint);
+  }
+  .contact-card i { font-size: 1.1rem; color: var(--mint); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #060d19; color: rgba(255,255,255,0.4);
+    text-align: center; padding: 24px;
+    font-size: 0.8rem;
+  }
+  footer a { color: var(--mint); text-decoration: none; }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    width: 60px; height: 4px; border-radius: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--mint));
+    margin-bottom: 40px;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 14px 24px; }
+    .nav-links { display: none; }
+    section { padding: 60px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-template-columns: 1fr; }
+    .goals-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Haris<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#journey">Journey</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#goals">Goals</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-blob blob-1"></div>
+    <div class="hero-blob blob-2"></div>
+    <div class="hero-blob blob-3"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-tag"><span class="dot"></span> Available for Collaboration</div>
+    <h1 class="hero-name">
+      Muhammad<br>
+      <span class="accent">Haris</span> <span class="accent2">Afridi</span>
+    </h1>
+    <p class="hero-title">
+      <strong>AI Engineer &amp; Full-Stack Developer</strong> — building intelligent systems from the ground up.
+      Self-taught in Python, Deep Learning, Computer Vision &amp; Web Development.
+      Student at Agriculture University of Peshawar &amp; Research Assistant at DIP Lab.
+    </p>
+    <div class="hero-cta">
+      <a href="https://github.com/harisyar-ai" target="_blank" class="btn btn-primary">
+        <i class="fab fa-github"></i> GitHub Profile
+      </a>
+      <a href="#projects" class="btn btn-outline">
+        <i class="fas fa-code"></i> View Projects
+      </a>
+      <a href="mailto:mharisyar.ai@gmail.com" class="btn btn-outline">
+        <i class="fas fa-envelope"></i> Get in Touch
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">8<span>+</span></div>
+        <div class="stat-label">Public Repositories</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">97<span>%</span></div>
+        <div class="stat-label">Best Model R² Score</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10k<span>+</span></div>
+        <div class="stat-label">Books in Nova Recommender</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5<span>+</span></div>
+        <div class="stat-label">Live Deployed Apps</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">// who i am</div>
+      <h2 class="section-title">About Me</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-avatar-wrap">
+        <div class="avatar-ring">
+          <div class="avatar-inner">
+            <img src="https://github.com/harisyar-ai.png" alt="Muhammad Haris Afridi">
+          </div>
+        </div>
+        <div class="about-badges">
+          <span class="badge"><i class="fas fa-brain"></i> AI Engineer</span>
+          <span class="badge green"><i class="fas fa-code"></i> Full-Stack Dev</span>
+          <span class="badge gold"><i class="fas fa-graduation-cap"></i> BSc AI Student</span>
+          <span class="badge green"><i class="fas fa-flask"></i> DIP Lab RA</span>
+          <span class="badge"><i class="fas fa-book"></i> Avid Reader</span>
+          <span class="badge gold"><i class="fas fa-pencil-alt"></i> Artist</span>
+        </div>
+      </div>
+      <div class="about-cards">
+        <div class="about-card">
+          <h3><i class="fas fa-user"></i> Who I Am</h3>
+          <p>
+            I'm Muhammad Haris Afridi — a passionate, self-taught AI Engineer and Full-Stack Developer from Peshawar, Pakistan.
+            I love turning raw ideas into real-world tools. Whether it's a machine learning model, a government web platform,
+            or an intelligent recommender system, I build things that actually matter and actually work.
+            When I'm not coding, I'm reading, drawing, or eating something delicious.
+          </p>
+        </div>
+        <div class="about-card">
+          <h3><i class="fas fa-university"></i> Current Position</h3>
+          <p>
+            Pursuing a <strong>Bachelor of Science in Artificial Intelligence</strong> (2023–2027) at Agriculture University of Peshawar.
+            Simultaneously serving as a <strong>Research Assistant</strong> at the Digital Image Processing (DIP) Lab,
+            Islamia College Peshawar — where I work on applied computer vision research.
+          </p>
+        </div>
+        <div class="about-card">
+          <h3><i class="fas fa-heart"></i> What Drives Me</h3>
+          <p>
+            I love Coding | Reading | Drawing | Eating. I believe in building tools that solve real problems —
+            from predicting car prices for Pakistani buyers to creating a government MIS that transforms
+            how districts plan and prioritize development projects.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="journey-section" id="journey">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">// my path</div>
+      <h2 class="section-title">Developer Journey</h2>
+      <p class="section-sub">From writing first lines of Python to building full-stack government platforms — here's how it unfolded.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">Phase 01 — Foundation</div>
+        <div class="tl-title">HTML &amp; CSS — Building the Visual Web</div>
+        <div class="tl-desc">
+          Started with the fundamentals: semantic HTML structure, CSS layouts, flexbox, grid, animations, and responsive design.
+          Learned to craft clean, accessible, and visually polished interfaces from scratch — the skill that later made every
+          project feel professional rather than generic.
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">Phase 02 — Programming Core</div>
+        <div class="tl-title">Python — The Language of Intelligence</div>
+        <div class="tl-desc">
+          Self-taught Python from the ground up. Mastered data structures, OOP, file handling, and the scientific ecosystem —
+          NumPy, Pandas, Matplotlib. Python became the backbone of every project that followed, from ML pipelines to full web backends.
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">Phase 03 — Backend & Web</div>
+        <div class="tl-title">Flask — Full-Stack Web Development</div>
+        <div class="tl-desc">
+          Moved into backend development using Python Flask. Built complete web applications with routing, authentication,
+          SQLite databases, Jinja2 templating, file uploads, and REST APIs. Combined with HTML/CSS frontend knowledge to
+          deliver truly full-stack solutions — both the server and the interface, solo.
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">Phase 04 — Machine Learning</div>
+        <div class="tl-title">ML Engineering — Models That Predict &amp; Understand</div>
+        <div class="tl-desc">
+          Dove deep into supervised learning, regression, classification, and ensemble methods (LightGBM, Random Forest, Gradient Boosting).
+          Built end-to-end ML pipelines: data scraping, cleaning, feature engineering, model comparison, SHAP explainability, and Streamlit deployment.
+          Achieved R² scores up to 97.48% on real-world Pakistani market data.
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">Phase 05 — Deep Learning & AI</div>
+        <div class="tl-title">TensorFlow / Keras, NLP &amp; Computer Vision</div>
+        <div class="tl-desc">
+          Expanded into deep learning with TensorFlow and Keras — CNNs, NLP pipelines (TF-IDF, cosine similarity, Hugging Face transformers),
+          and digital image processing. Currently a Research Assistant at a dedicated DIP Lab, applying these skills to real research.
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">Phase 06 — Real-World Impact</div>
+        <div class="tl-title">IDBPM — Government MIS Platform (Current)</div>
+        <div class="tl-desc">
+          The culmination of the full-stack journey: designed and developed a production-grade governmental Management Information System
+          for districts across the region — combining Python Flask backend, custom HTML/CSS frontend, SQLite database,
+          Excel data processing, AI-driven prioritization, and multi-role authentication. Built from scratch. Deployed for real use.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">// tech stack</div>
+      <h2 class="section-title">Skills &amp; Technologies</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon blue-bg"><i class="fab fa-html5"></i></div>
+          <div class="skill-card-title">Frontend Development</div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML5</span>
+          <span class="skill-tag">CSS3</span>
+          <span class="skill-tag">Flexbox / Grid</span>
+          <span class="skill-tag">Responsive Design</span>
+          <span class="skill-tag">Jinja2 Templates</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">Animations</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon green-bg"><i class="fas fa-server"></i></div>
+          <div class="skill-card-title">Backend Development</div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Flask</span>
+          <span class="skill-tag">SQLite</span>
+          <span class="skill-tag">REST APIs</span>
+          <span class="skill-tag">Authentication</span>
+          <span class="skill-tag">File Handling</span>
+          <span class="skill-tag">Werkzeug</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon gold-bg"><i class="fas fa-robot"></i></div>
+          <div class="skill-card-title">AI / Machine Learning</div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Scikit-Learn</span>
+          <span class="skill-tag">LightGBM</span>
+          <span class="skill-tag">Random Forest</span>
+          <span class="skill-tag">Gradient Boosting</span>
+          <span class="skill-tag">SHAP</span>
+          <span class="skill-tag">Feature Engineering</span>
+          <span class="skill-tag">Pandas / NumPy</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon teal-bg"><i class="fas fa-brain"></i></div>
+          <div class="skill-card-title">Deep Learning &amp; NLP</div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">Keras</span>
+          <span class="skill-tag">CNNs</span>
+          <span class="skill-tag">NLP / TF-IDF</span>
+          <span class="skill-tag">Cosine Similarity</span>
+          <span class="skill-tag">Hugging Face</span>
+          <span class="skill-tag">Transformers</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon blue-bg"><i class="fas fa-eye"></i></div>
+          <div class="skill-card-title">Computer Vision &amp; DIP</div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">OpenCV</span>
+          <span class="skill-tag">Image Processing</span>
+          <span class="skill-tag">GANs</span>
+          <span class="skill-tag">Object Detection</span>
+          <span class="skill-tag">DIP Research</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon green-bg"><i class="fas fa-tools"></i></div>
+          <div class="skill-card-title">Tools &amp; Deployment</div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Streamlit</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">openpyxl</span>
+          <span class="skill-tag">Pandas Excel I/O</span>
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">Jupyter</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects-section" id="projects">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">// what i've built</div>
+      <h2 class="section-title">Projects</h2>
+      <p class="section-sub">From government platforms to AI-powered apps — real tools solving real problems.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="projects-grid reveal">
+
+      <!-- FEATURED: IDBPM -->
+      <div class="project-card featured">
+        <div class="feat-banner">
+          <div class="feat-tag"><i class="fas fa-star"></i> &nbsp;Featured Project</div>
+          <h2>IDBPM — District Planning &amp; Management Information System</h2>
+          <p>
+            A full-stack governmental MIS platform designed for all districts in the region. Built from scratch to replace a dated,
+            limited legacy system — with intelligent prioritization, multi-role access, and a modern interface that actual government
+            officers use every day.
+          </p>
+          <div class="feat-highlights">
+            <div class="feat-hl"><i class="fas fa-check-circle"></i> Multi-role authentication system (Admin, Officers, Viewers)</div>
+            <div class="feat-hl"><i class="fas fa-check-circle"></i> AI-driven scheme prioritization — scores &amp; ranks development projects by criteria</div>
+            <div class="feat-hl"><i class="fas fa-check-circle"></i> Excel/CSV upload → parse → display → edit → re-prioritize pipeline</div>
+            <div class="feat-hl"><i class="fas fa-check-circle"></i> Interactive data grids with column filtering (Excel-style AutoFilter)</div>
+            <div class="feat-hl"><i class="fas fa-check-circle"></i> Upload Data section for needlists &amp; general district data management</div>
+            <div class="feat-hl"><i class="fas fa-check-circle"></i> MTDP documents, sectoral profiles, VCNC management across tehsils</div>
+          </div>
+        </div>
+        <div class="project-body" style="padding: 32px;">
+          <div style="margin-bottom: 20px;">
+            <div class="project-type type-gov" style="width:fit-content;">Government / MIS</div>
+          </div>
+          <p class="project-desc">
+            The previous system was basic, fragmented, and couldn't handle the complexity of real district-level planning.
+            I redesigned it completely — adding a proper Flask backend with SQLite, a clean HTML/CSS interface matching official
+            branding, and a novel <strong>AI prioritization engine</strong> that scores schemes across multiple criteria
+            (beneficiary households, estimated cost, sector, VCNC) to help planners make better decisions faster.
+            <br><br>
+            Built solo over months of continuous iteration, this is the project where all skills converged —
+            full-stack web, data processing, UX design, and real-world deployment.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag blue">Python</span>
+            <span class="project-tag blue">Flask</span>
+            <span class="project-tag green">HTML / CSS</span>
+            <span class="project-tag green">SQLite</span>
+            <span class="project-tag gold">openpyxl</span>
+            <span class="project-tag gold">Pandas</span>
+            <span class="project-tag red">Jinja2</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nova Books -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-type type-nlp">NLP / Recommender</span>
+          <div class="project-links">
+            <a href="https://nova-books-recommender.streamlit.app/" target="_blank" class="proj-link" title="Live App"><i class="fas fa-external-link-alt"></i></a>
+            <a href="https://github.com/harisyar-ai/nova-books-recommender" target="_blank" class="proj-link" title="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Nova Books Recommender</div>
+          <p class="project-desc">
+            Content-based book recommendation engine using TF-IDF and cosine similarity across 10,000+ books.
+            Analyzes title, author, description, and genres to surface meaningful matches — no ratings, no history needed.
+            Includes a custom cover image scraper and mobile-responsive Streamlit UI.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag blue">Python</span>
+            <span class="project-tag blue">NLP</span>
+            <span class="project-tag green">TF-IDF</span>
+            <span class="project-tag gold">Streamlit</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Car Price Predictor -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-type type-ml">ML / Regression</span>
+          <div class="project-links">
+            <a href="https://pakistani-car-price-predictor.streamlit.app/" target="_blank" class="proj-link" title="Live App"><i class="fas fa-external-link-alt"></i></a>
+            <a href="https://github.com/harisyar-ai/pakistani-car-price-predictor" target="_blank" class="proj-link" title="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Pakistani Car Price Predictor</div>
+          <p class="project-desc">
+            End-to-end ML pipeline trained on 5,000+ real PakWheels listings.
+            19 engineered features including brand tier, hybrid/EV flag, city premium, and mileage-per-year.
+            LightGBM model with SHAP explainability.
+          </p>
+          <div class="project-metric"><i class="fas fa-chart-line"></i> R² = 97.48%</div>
+          <div class="project-tags" style="margin-top:12px;">
+            <span class="project-tag blue">LightGBM</span>
+            <span class="project-tag green">SHAP</span>
+            <span class="project-tag gold">PakWheels Data</span>
+            <span class="project-tag red">Streamlit</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Medical Insurance -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-type type-ml">ML / Regression</span>
+          <div class="project-links">
+            <a href="https://medical-insurance-cost-prediction-system.streamlit.app/" target="_blank" class="proj-link" title="Live App"><i class="fas fa-external-link-alt"></i></a>
+            <a href="https://github.com/harisyar-ai/medical-insurance-cost-prediction" target="_blank" class="proj-link" title="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Medical Insurance Cost Prediction</div>
+          <p class="project-desc">
+            Supervised regression system estimating annual health insurance charges. Extensive feature engineering
+            (polynomial features, interaction terms, log transformation) across 15+ compared models.
+            Random Forest won.
+          </p>
+          <div class="project-metric"><i class="fas fa-chart-line"></i> R² = 92.46%</div>
+          <div class="project-tags" style="margin-top:12px;">
+            <span class="project-tag blue">Random Forest</span>
+            <span class="project-tag green">Feature Eng.</span>
+            <span class="project-tag gold">Streamlit</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job Salary -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-type type-ml">ML / Regression</span>
+          <div class="project-links">
+            <a href="https://job-salary-prediction.streamlit.app/" target="_blank" class="proj-link" title="Live App"><i class="fas fa-external-link-alt"></i></a>
+            <a href="https://github.com/harisyar-ai/job-salary-prediction" target="_blank" class="proj-link" title="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Job Salary Prediction</div>
+          <p class="project-desc">
+            ML regression app estimating annual salaries based on education, experience, job title, location, and gender.
+            Benchmarked 11 models with full preprocessing pipelines.
+            Gradient Boosting took the crown.
+          </p>
+          <div class="project-metric"><i class="fas fa-chart-line"></i> R² = 85.49%</div>
+          <div class="project-tags" style="margin-top:12px;">
+            <span class="project-tag blue">Gradient Boosting</span>
+            <span class="project-tag green">11 Models</span>
+            <span class="project-tag gold">Streamlit</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Breast Cancer -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-type type-cv">ML / Classification</span>
+          <div class="project-links">
+            <a href="https://github.com/harisyar-ai" target="_blank" class="proj-link" title="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Breast Cancer Prediction</div>
+          <p class="project-desc">
+            Machine learning classification project for breast cancer diagnosis using clinical features.
+            Full EDA, preprocessing pipeline, and model evaluation. Deployment pending.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag blue">Classification</span>
+            <span class="project-tag green">Medical ML</span>
+            <span class="project-tag gold">Scikit-Learn</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CURRENT & GOALS -->
+<section class="goals-section" id="goals">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">// where i'm headed</div>
+      <h2 class="section-title">Current Work &amp; Future Goals</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="goals-grid reveal">
+      <div class="goal-card">
+        <div class="goal-card-label label-now">Currently Working On</div>
+        <h3>Right Now</h3>
+        <ul class="goal-list">
+          <li><i class="fas fa-circle"></i> Actively developing and improving the IDBPM governmental MIS — adding new modules, fixing edge cases, and improving UX based on real user feedback.</li>
+          <li><i class="fas fa-circle"></i> Research Assistant work at DIP Lab — applying computer vision to real academic research problems.</li>
+          <li><i class="fas fa-circle"></i> Deepening knowledge of Transformers, advanced CNNs, and GANs within AI coursework at Agriculture University.</li>
+          <li><i class="fas fa-circle"></i> Building and iterating on Streamlit ML apps — refining deployed models and improving UI/UX.</li>
+        </ul>
+      </div>
+      <div class="goal-card">
+        <div class="goal-card-label label-next">What's Next</div>
+        <h3>Future Goals</h3>
+        <ul class="goal-list">
+          <li><i class="fas fa-arrow-right"></i> Deploy the full IDBPM platform to a production server so it can serve all target districts reliably.</li>
+          <li><i class="fas fa-arrow-right"></i> Develop a Transformer-based NLP project to push beyond TF-IDF into contextual understanding.</li>
+          <li><i class="fas fa-arrow-right"></i> Build a Computer Vision project leveraging DIP Lab research — ideally published or showcased.</li>
+          <li><i class="fas fa-arrow-right"></i> Contribute to open-source AI tools and grow the GitHub portfolio with real-impact projects.</li>
+          <li><i class="fas fa-arrow-right"></i> Complete BSc in AI and pursue advanced research or industry roles in ML Engineering or AI Systems.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">// let's connect</div>
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-sub">
+        Open to collaborations, research opportunities, and interesting projects.
+        Whether you want to build something together or just say hi — reach out.
+      </p>
+    </div>
+    <div class="contact-links reveal">
+      <a href="mailto:mharisyar.ai@gmail.com" class="contact-card">
+        <i class="fas fa-envelope"></i>
+        mharisyar.ai@gmail.com
+      </a>
+      <a href="https://github.com/harisyar-ai" target="_blank" class="contact-card">
+        <i class="fab fa-github"></i>
+        github.com/harisyar-ai
+      </a>
+      <a href="https://linkedin.com/in/muhammad-haris-afridi" target="_blank" class="contact-card">
+        <i class="fab fa-linkedin"></i>
+        muhammad-haris-afridi
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed &amp; built by <a href="https://github.com/harisyar-ai">Muhammad Haris Afridi</a> · 2025 · Peshawar, Pakistan</p>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) { el.target.classList.add('visible'); }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Stagger reveal children
+document.querySelectorAll('.skills-grid .skill-card, .projects-grid .project-card, .goals-grid .goal-card').forEach((el, i) => {
+  el.style.transitionDelay = (i * 0.08) + 's';
+  el.classList.add('reveal');
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
