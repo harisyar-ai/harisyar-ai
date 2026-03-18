@@ -16,7 +16,7 @@
 
 ---
 
-# <a href="./index.html" target="_blank">Click to open my portfolio</a>
+## <a href="./index.html" target="_blank">Click Here to open my portfolio...</a>
 
 ---
 
