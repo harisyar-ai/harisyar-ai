@@ -16,6 +16,10 @@
 
 ---
 
+# <a href="./index.html" target="_blank">Click to open my portfolio</a>
+
+---
+
 ## About Me
 
 Passionate **self-taught AI Engineer** building intelligent apps with **Artificial Intelligence**, **Deep Learning**, **NLP**, and **Digital Image Processing** — turning ideas into real-world tools.
