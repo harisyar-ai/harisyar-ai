@@ -42,7 +42,6 @@ When I'm not coding, you'll find me lost in a good book or experimenting with **
 
 ## Tech Stack
 
-
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
 ![OpenCV](https://img.shields.io/badge/OpenCV-5CACEE?style=for-the-badge&logo=opencv&logoColor=white)
@@ -57,6 +56,11 @@ When I'm not coding, you'll find me lost in a good book or experimenting with **
 ---
 
 ## Featured Projects & Streamlit Deployment
+
+### Integrated Development Budget Planning & Monitoring (IDBPM)
+A full-stack planning and monitoring system for local governments in Khyber Pakhtunkhwa. Includes tehsil profiles, need lists, prioritization engine, Excel/CSV uploads, and role-based access for master and tehsil users. Built with Flask and PostgreSQL and deployed on Railway.
+
+---
 
 ### Nova Books Recommender
 [![Open App](https://img.shields.io/badge/Open_App-FF5722?style=for-the-badge&logo=appveyor&logoColor=white)](https://nova-books-recommender.streamlit.app/)
@@ -90,6 +94,7 @@ ML regression app that estimates annual salaries based on education, experience,
 [![Not Deployed Yet](https://img.shields.io/badge/Not_Deployed_Yet-9E9E9E?style=for-the-badge)](#)
 
 Machine learning classification project for breast cancer diagnosis. This project is included in my portfolio, but the deployment link is intentionally omitted for now.
+
 ## My Socials
 
 <div align="center">
@@ -99,3 +104,4 @@ Machine learning classification project for breast cancer diagnosis. This projec
 [![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mharisyar.ai@gmail.com)
 
 </div>
+'@ | Set-Content -Encoding UTF8 C:\My_portfolio\README.md
