@@ -61,7 +61,7 @@ When I'm not coding, you'll find me lost in a good book or experimenting with **
 
 ## Featured Projects & Streamlit Deployment
 
-### Integrated Development Budget Planning & Monitoring (IDBPM)
+### Idbpm-mis
 A full-stack planning and monitoring system for local governments in Khyber Pakhtunkhwa. Includes tehsil profiles, need lists, prioritization engine, Excel/CSV uploads, and role-based access for master and tehsil users. Built with Flask and PostgreSQL and deployed on Railway.
 
 ---
