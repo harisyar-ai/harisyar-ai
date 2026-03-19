@@ -108,4 +108,3 @@ Machine learning classification project for breast cancer diagnosis. This projec
 [![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mharisyar.ai@gmail.com)
 
 </div>
-'@ | Set-Content -Encoding UTF8 C:\My_portfolio\README.md
