@@ -25,7 +25,7 @@
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
 
   body {
     font-family: 'DM Sans', sans-serif;
@@ -46,7 +46,7 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 16px 60px;
+    padding: 16px clamp(18px, 5vw, 60px);
     background: rgba(247,244,239,0.88);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
@@ -71,8 +71,8 @@
   .hero {
     min-height: 100vh;
     display: grid; place-items: center;
-    position: relative; overflow: hidden;
-    padding: 120px 60px 80px;
+    position: relative; overflow: clip;
+    padding: 120px clamp(18px, 5vw, 60px) 80px;
   }
 
   /* Geometric background shapes */
@@ -82,6 +82,7 @@
   }
   .hero-blob {
     position: absolute; border-radius: 50%; filter: blur(70px);
+    max-width: 90vw; max-height: 90vw;
   }
   .blob-1 {
     width: 500px; height: 500px;
@@ -116,7 +117,7 @@
 
   .hero-inner {
     position: relative; z-index: 1;
-    max-width: 900px; width: 100%;
+    max-width: 900px; width: 100%; overflow-wrap: break-word;
   }
 
   .hero-tag {
@@ -152,7 +153,7 @@
     margin-top: 18px;
     font-size: 1.15rem; font-weight: 300; color: var(--muted);
     line-height: 1.7;
-    max-width: 560px;
+    max-width: 560px; width: 100%;
     animation: fadeUp 0.6s 0.2s ease both;
   }
   .hero-title strong { color: var(--blue); font-weight: 500; }
@@ -198,7 +199,7 @@
   }
 
   /* ── SECTION SHARED ── */
-  section { position: relative; z-index: 1; padding: 80px 60px; }
+  section { position: relative; z-index: 1; padding: 80px clamp(18px, 5vw, 60px); }
   .section-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.72rem; font-weight: 600; letter-spacing: 2px;
@@ -215,7 +216,7 @@
     font-size: 1rem; color: var(--muted); max-width: 540px;
     line-height: 1.7; margin-bottom: 50px;
   }
-  .container { max-width: 1100px; margin: 0 auto; }
+  .container { max-width: 1100px; margin: 0 auto; width: 100%; }
 
   /* ── ABOUT ── */
   .about-section { background: white; }
@@ -521,16 +522,146 @@
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* ── RESPONSIVE ── */
+  /* On mobile, skip reveal animation — show everything immediately */
   @media (max-width: 768px) {
-    nav { padding: 14px 24px; }
-    .nav-links { display: none; }
-    section { padding: 60px 24px; }
-    .hero { padding: 100px 24px 60px; }
-    .about-grid { grid-template-columns: 1fr; }
-    .project-card.featured { grid-template-columns: 1fr; }
-    .goals-grid { grid-template-columns: 1fr; }
-    .hero-stats { gap: 24px; }
+    .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* ── HAMBURGER BUTTON ── */
+  .nav-toggle {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px;
+    width: 40px; height: 40px;
+    background: none; border: none; cursor: pointer;
+    padding: 4px; z-index: 200;
+  }
+  .nav-toggle span {
+    display: block; width: 22px; height: 2px;
+    background: var(--navy); border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile nav drawer */
+  .nav-drawer {
+    display: none;
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(247,244,239,0.97);
+    backdrop-filter: blur(18px);
+    z-index: 150;
+    flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 8px;
+  }
+  .nav-drawer.open { display: flex; }
+  .nav-drawer a {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--navy); text-decoration: none;
+    padding: 12px 32px; border-radius: var(--radius);
+    transition: background 0.2s, color 0.2s;
+    letter-spacing: -0.5px;
+  }
+  .nav-drawer a:hover { background: rgba(26,86,160,0.08); color: var(--blue); }
+
+  /* ── RESPONSIVE ── */
+
+  /* Medium tablets */
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr !important; }
+    .about-avatar-wrap { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    .project-card.featured { grid-template-columns: 1fr !important; grid-column: auto !important; }
+    .goals-grid { grid-template-columns: 1fr !important; }
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    /* Ensure animated hero elements are always visible on mobile */
+    .hero-tag, .hero-name, .hero-title, .hero-cta, .hero-stats {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    .nav-links { display: none !important; }
+    .nav-toggle { display: flex !important; }
+
+    section { padding: 56px 18px !important; }
+    .hero { padding: 90px 18px 56px !important; min-height: 100svh; }
+
+    .hero-name {
+      font-size: clamp(2rem, 10vw, 3rem) !important;
+      letter-spacing: -1px !important;
+      word-break: break-word;
+    }
+    .hero-title { font-size: 0.92rem !important; max-width: 100% !important; width: 100% !important; }
+
+    .hero-cta { flex-direction: column !important; gap: 10px !important; }
+    .hero-cta .btn { width: 100% !important; justify-content: center !important; }
+
+    .hero-stats {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 16px 24px !important;
+      margin-top: 40px !important;
+    }
+    .stat-num { font-size: 1.5rem !important; }
+    .hero-tag { font-size: 0.7rem; padding: 5px 12px; margin-bottom: 20px; }
+
+    .about-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+    .about-avatar-wrap { flex-direction: column !important; align-items: center !important; }
+    .avatar-ring { width: 160px !important; height: 160px !important; }
+    .about-badges { flex-direction: row !important; flex-wrap: wrap !important; justify-content: center !important; }
+
+    .skills-grid { grid-template-columns: 1fr !important; }
+
+    .projects-grid { grid-template-columns: 1fr !important; }
+    .project-card.featured {
+      grid-column: auto !important;
+      grid-template-columns: 1fr !important;
+    }
+    .feat-banner { padding: 22px !important; }
+    .feat-banner h2 { font-size: 1.25rem !important; }
+
+    .goals-grid { grid-template-columns: 1fr !important; }
+    .goal-card { padding: 18px !important; }
+
+    .contact-links { flex-direction: column !important; align-items: stretch !important; }
+    .contact-card { min-width: unset !important; width: 100% !important; box-sizing: border-box !important; }
+
+    .section-title { letter-spacing: -0.5px; font-size: clamp(1.5rem, 6vw, 2rem) !important; }
+    .section-sub { font-size: 0.88rem; margin-bottom: 32px !important; }
+    .section-divider { margin-bottom: 28px; }
+
+    .timeline { padding-left: 22px !important; }
+    .tl-dot { left: -26px !important; }
+
+    .blob-1 { width: min(280px, 80vw) !important; height: min(280px, 80vw) !important; }
+    .blob-2 { width: min(220px, 70vw) !important; height: min(220px, 70vw) !important; }
+    .blob-3 { width: min(160px, 60vw) !important; height: min(160px, 60vw) !important; }
+
+    .skill-card { padding: 18px !important; }
+    .project-header { padding: 18px 18px 0 !important; }
+    .project-body { padding: 16px 18px 18px !important; }
+
+    footer { padding: 18px 16px !important; font-size: 0.75rem; }
+  }
+
+  /* Very small phones */
+  @media (max-width: 380px) {
+    .hero-name { font-size: 1.9rem !important; }
+    .hero-stats { gap: 12px !important; }
+    .stat-num { font-size: 1.3rem !important; }
+    .btn { padding: 10px 16px !important; font-size: 0.8rem !important; }
+    .about-card { padding: 18px !important; }
   }
 </style>
 </head>
@@ -547,7 +678,20 @@
     <li><a href="#goals">Goals</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="nav-drawer" id="navDrawer">
+  <a href="#about"    onclick="closeDrawer()">About</a>
+  <a href="#journey"  onclick="closeDrawer()">Journey</a>
+  <a href="#skills"   onclick="closeDrawer()">Skills</a>
+  <a href="#projects" onclick="closeDrawer()">Projects</a>
+  <a href="#goals"    onclick="closeDrawer()">Goals</a>
+  <a href="#contact"  onclick="closeDrawer()">Contact</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -1077,12 +1221,43 @@
 </footer>
 
 <script>
+// Hamburger menu
+const navToggle = document.getElementById('navToggle');
+const navDrawer = document.getElementById('navDrawer');
+navToggle.addEventListener('click', () => {
+  const open = navDrawer.classList.toggle('open');
+  navToggle.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+function closeDrawer() {
+  navDrawer.classList.remove('open');
+  navToggle.classList.remove('open');
+  document.body.style.overflow = '';
+}
+// Close drawer on resize back to desktop
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 640) closeDrawer();
+});
+</script>
+<script>
 // Scroll reveal
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(el => {
     if (el.isIntersecting) { el.target.classList.add('visible'); }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+// Also immediately show any .reveal elements already in the viewport on load
+function revealVisible() {
+  document.querySelectorAll('.reveal').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      el.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('load', revealVisible);
+window.addEventListener('scroll', revealVisible, { passive: true, once: true });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
