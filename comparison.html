@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Comparison — Pakistani Used Car Price Prediction</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --bg3: #18181f;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #f0f0f5;
+    --muted: #888899;
+    --dim: #555566;
+    --accent: #4f8ef7;
+    --accent2: #7c5cfc;
+    --win: #3ecf8e;
+    --warn: #f5a623;
+    --red: #ff5c5c;
+    --card: #13131a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* NOISE TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  .page { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 32px 80px; }
+
+  /* HEADER */
+  header {
+    padding: 64px 0 48px;
+    border-bottom: 0.5px solid var(--border);
+    margin-bottom: 56px;
+  }
+  .header-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .header-tag::before {
+    content: '';
+    display: inline-block;
+    width: 20px; height: 1px;
+    background: var(--accent);
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  h1 span { color: var(--accent); }
+  .header-sub {
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 300;
+    max-width: 560px;
+  }
+
+  /* METRIC STRIP */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 56px;
+  }
+  .metric {
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 20px 18px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .metric:hover { border-color: var(--border2); }
+  .metric.accent-card { border-color: rgba(79,142,247,0.3); }
+  .metric.win-card { border-color: rgba(62,207,142,0.3); }
+  .metric-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .metric-val {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .metric-val.blue { color: var(--accent); }
+  .metric-val.green { color: var(--win); }
+  .metric-val.plain { color: var(--text); }
+  .metric-sub {
+    font-size: 11px;
+    color: var(--dim);
+  }
+
+  /* SECTION HEADING */
+  .section-heading {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-heading::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  /* BAR CHART SECTION */
+  .chart-section { margin-bottom: 56px; }
+  .chart-wrap {
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .chart-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .chart-desc {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .canvas-wrap { position: relative; width: 100%; height: 320px; }
+
+  /* COMPARISON TABLE */
+  .table-section { margin-bottom: 56px; }
+  .table-wrap {
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  thead th {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 16px;
+    text-align: left;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 0.5px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody tr { border-bottom: 0.5px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+  tbody tr.you-row { background: rgba(79,142,247,0.06); }
+  tbody tr.you-row:hover { background: rgba(79,142,247,0.1); }
+  tbody tr.divider { background: rgba(255,255,255,0.015); }
+  td {
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--text);
+    vertical-align: middle;
+  }
+  td.muted { color: var(--muted); font-size: 12px; }
+  .paper-name { font-weight: 500; font-size: 13px; }
+  .paper-meta { font-size: 11px; color: var(--dim); margin-top: 2px; }
+
+  .badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .badge-win { background: rgba(62,207,142,0.12); color: #3ecf8e; border: 0.5px solid rgba(62,207,142,0.25); }
+  .badge-na  { background: rgba(255,255,255,0.05); color: var(--dim); border: 0.5px solid var(--border); }
+  .badge-you { background: rgba(79,142,247,0.15); color: var(--accent); border: 0.5px solid rgba(79,142,247,0.3); }
+  .badge-diff{ background: rgba(245,166,35,0.1); color: var(--warn); border: 0.5px solid rgba(245,166,35,0.25); }
+
+  /* inline bar */
+  .r2-row { display: flex; align-items: center; gap: 8px; }
+  .r2-bar-bg { width: 80px; height: 5px; background: rgba(255,255,255,0.06); border-radius: 3px; flex-shrink: 0; }
+  .r2-bar-fill { height: 100%; border-radius: 3px; }
+  .r2-num { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text); }
+  .delta-tag { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--win); }
+
+  /* DOT */
+  .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 4px; vertical-align: middle; flex-shrink: 0; }
+  .dot-yes { background: var(--win); }
+  .dot-no  { background: var(--dim); }
+  .feat-list { display: flex; flex-direction: column; gap: 3px; }
+  .feat-item { display: flex; align-items: center; font-size: 11px; color: var(--muted); }
+
+  /* DIVIDER ROW */
+  .divider-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    background: rgba(255,255,255,0.015);
+  }
+
+  /* SCATTER SECTION */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 56px; }
+
+  /* FEATURE HEATMAP */
+  .heatmap-section { margin-bottom: 56px; }
+  .heatmap-grid {
+    display: grid;
+    grid-template-columns: 180px repeat(5, 1fr);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--card);
+  }
+  .hm-head {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 0.5px solid var(--border);
+    border-right: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+  }
+  .hm-head:last-child { border-right: none; }
+  .hm-paper-label {
+    padding: 11px 14px;
+    font-size: 12px;
+    color: var(--text);
+    border-bottom: 0.5px solid var(--border);
+    border-right: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+  }
+  .hm-paper-label .sub { font-size: 10px; color: var(--dim); display: block; }
+  .hm-cell {
+    padding: 11px 10px;
+    border-bottom: 0.5px solid var(--border);
+    border-right: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+  }
+  .hm-cell:last-child { border-right: none; }
+  .hm-cell.yes { color: var(--win); }
+  .hm-cell.no  { color: var(--dim); }
+  .hm-cell.partial { color: var(--warn); }
+  .hm-row-you .hm-paper-label, .hm-row-you .hm-cell {
+    background: rgba(79,142,247,0.05);
+  }
+  .last-row .hm-paper-label, .last-row .hm-cell { border-bottom: none; }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--dim);
+  }
+
+  @media (max-width: 700px) {
+    .metrics { grid-template-columns: repeat(2,1fr); }
+    .two-col { grid-template-columns: 1fr; }
+    .heatmap-grid { grid-template-columns: 120px repeat(5,1fr); }
+    .page { padding: 0 16px 60px; }
+    h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-tag">Research Analysis · 2026</div>
+    <h1>Pakistani Used Car<br><span>Price Prediction</span></h1>
+    <p class="header-sub">Side-by-side comparison of your work against 7 related papers — dataset, methodology, model performance, and feature engineering depth.</p>
+  </header>
+
+  <!-- METRIC STRIP -->
+  <div class="metrics">
+    <div class="metric accent-card">
+      <div class="metric-label">Your best R²</div>
+      <div class="metric-val blue">0.973</div>
+      <div class="metric-sub">LightGBM · 14 models</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Best prior PK paper</div>
+      <div class="metric-val plain">0.90</div>
+      <div class="metric-sub">Asghar 2021 · OLS</div>
+    </div>
+    <div class="metric win-card">
+      <div class="metric-label">Improvement over PK</div>
+      <div class="metric-val green">+8.1%</div>
+      <div class="metric-sub">Same data source</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Papers outperformed</div>
+      <div class="metric-val plain">4 / 4</div>
+      <div class="metric-sub">With reported R²</div>
+    </div>
+  </div>
+
+  <!-- BAR CHART — R² Comparison -->
+  <div class="chart-section">
+    <div class="section-heading">Performance comparison</div>
+    <div class="chart-wrap">
+      <div class="chart-title">R² score across all papers with reported results</div>
+      <div class="chart-desc">Higher is better. Your LightGBM result shown in blue.</div>
+      <div class="canvas-wrap">
+        <canvas id="r2Chart" role="img" aria-label="Bar chart comparing R² scores across papers. Your work scores 0.973, the highest.">
+          R² scores: Your work 0.973, Farman 2025 0.96, AlShared 2021 0.95, Asghar 2021 0.90, Ahtesham 2022 0.89.
+        </canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- TWO CHARTS -->
+  <div class="two-col">
+    <div class="chart-wrap">
+      <div class="chart-title">Dataset size</div>
+      <div class="chart-desc">Clean modeling rows per study</div>
+      <div class="canvas-wrap" style="height:260px;">
+        <canvas id="datasetChart" role="img" aria-label="Bar chart of dataset sizes. Farman 2025 has 140k rows, your work 60k, Asghar and Ahtesham 56k each.">
+          Dataset sizes: Farman 2025 140000, Your work 60396, Asghar 2021 56186, Ahtesham 2022 56186, AlShared 2021 unknown.
+        </canvas>
+      </div>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-title">Models evaluated</div>
+      <div class="chart-desc">Number of ML models compared per paper</div>
+      <div class="canvas-wrap" style="height:260px;">
+        <canvas id="modelsChart" role="img" aria-label="Bar chart of models evaluated. Your work evaluated 14 models, the most of any paper.">
+          Models evaluated: Your work 14, Farman 2025 5, AlShared 2021 3, Ahtesham 2022 3, Asghar 2021 1.
+        </canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN COMPARISON TABLE -->
+  <div class="table-section">
+    <div class="section-heading">Full paper breakdown</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:22%">Paper</th>
+            <th style="width:11%">Source</th>
+            <th style="width:10%">Rows</th>
+            <th style="width:15%">Best model</th>
+            <th style="width:17%">R² score</th>
+            <th style="width:12%">PK features</th>
+            <th style="width:13%">Verdict</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- DIVIDER -->
+          <tr><td colspan="7" class="divider-label">Pakistan market — same data source</td></tr>
+
+          <tr>
+            <td>
+              <div class="paper-name">Asghar et al. 2021</div>
+              <div class="paper-meta">PakJET · 50 citations</div>
+            </td>
+            <td class="muted">PakWheels<br>Kaggle</td>
+            <td class="muted">56,186</td>
+            <td class="muted">OLS Linear<br>+ RFE</td>
+            <td>
+              <div class="r2-row">
+                <div class="r2-bar-bg"><div class="r2-bar-fill" style="width:80%;background:#378ADD;"></div></div>
+                <span class="r2-num">0.90</span>
+              </div>
+              <div class="delta-tag">you +0.073</div>
+            </td>
+            <td>
+              <div class="feat-list">
+                <span class="feat-item"><span class="dot dot-no"></span>No city tier</span>
+                <span class="feat-item"><span class="dot dot-no"></span>No brand origin</span>
+                <span class="feat-item"><span class="dot dot-no"></span>No trim</span>
+              </div>
+            </td>
+            <td><span class="badge badge-win">You win</span></td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="paper-name">Ahtesham & Zulfiqar 2022</div>
+              <div class="paper-meta">Springer ICDTA</div>
+            </td>
+            <td class="muted">PakWheels<br>Kaggle</td>
+            <td class="muted">56,186</td>
+            <td class="muted">Gradient Boost<br>via PySpark</td>
+            <td>
+              <div class="r2-row">
+                <div class="r2-bar-bg"><div class="r2-bar-fill" style="width:77%;background:#378ADD;"></div></div>
+                <span class="r2-num">~0.89</span>
+              </div>
+              <div class="delta-tag">you +0.083</div>
+            </td>
+            <td>
+              <div class="feat-list">
+                <span class="feat-item"><span class="dot dot-no"></span>No FE at all</span>
+                <span class="feat-item"><span class="dot dot-no"></span>3 models only</span>
+                <span class="feat-item"><span class="dot dot-yes"></span>PySpark</span>
+              </div>
+            </td>
+            <td><span class="badge badge-win">You win</span></td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="paper-name">Rana et al. (n.d.)</div>
+              <div class="paper-meta">Sarmaya Car · 0 citations</div>
+            </td>
+            <td class="muted">PakWheels<br>scrape</td>
+            <td class="muted">Not stated</td>
+            <td class="muted">Not reported</td>
+            <td><span class="muted">—</span></td>
+            <td>
+              <div class="feat-list">
+                <span class="feat-item"><span class="dot dot-yes"></span>Investment focus</span>
+                <span class="feat-item"><span class="dot dot-no"></span>No methodology</span>
+              </div>
+            </td>
+            <td><span class="badge badge-na">Not comparable</span></td>
+          </tr>
+
+          <!-- DIVIDER -->
+          <tr><td colspan="7" class="divider-label">International — different markets</td></tr>
+
+          <tr>
+            <td>
+              <div class="paper-name">Farman et al. 2025</div>
+              <div class="paper-meta">Sir Syed Univ. · Pakistani authors</div>
+            </td>
+            <td class="muted">Kaggle<br>US data</td>
+            <td class="muted">140,000</td>
+            <td class="muted">ANN (Keras)<br>+ embeddings</td>
+            <td>
+              <div class="r2-row">
+                <div class="r2-bar-bg"><div class="r2-bar-fill" style="width:94%;background:#378ADD;"></div></div>
+                <span class="r2-num">0.96</span>
+              </div>
+              <div class="delta-tag">you +0.013</div>
+            </td>
+            <td>
+              <div class="feat-list">
+                <span class="feat-item"><span class="dot dot-no"></span>US data only</span>
+                <span class="feat-item"><span class="dot dot-yes"></span>Deep learning</span>
+              </div>
+            </td>
+            <td><span class="badge badge-win">You win</span></td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="paper-name">Fatima et al. 2024</div>
+              <div class="paper-meta">Spectrum Eng. Sciences</div>
+            </td>
+            <td class="muted">Unspecified</td>
+            <td class="muted">Unknown</td>
+            <td class="muted">Random Forest<br>after 4-method selection</td>
+            <td><span class="muted">+10.3% only</span></td>
+            <td>
+              <div class="feat-list">
+                <span class="feat-item"><span class="dot dot-yes"></span>RFE + Lasso</span>
+                <span class="feat-item"><span class="dot dot-no"></span>Baseline hidden</span>
+              </div>
+            </td>
+            <td><span class="badge badge-na">Incomparable</span></td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="paper-name">AlShared 2021</div>
+              <div class="paper-meta">RIT Master's Thesis · UAE</div>
+            </td>
+            <td class="muted">UAE scrape</td>
+            <td class="muted">Not stated</td>
+            <td class="muted">Random Forest<br>3 models total</td>
+            <td>
+              <div class="r2-row">
+                <div class="r2-bar-bg"><div class="r2-bar-fill" style="width:88%;background:#378ADD;"></div></div>
+                <span class="r2-num">0.95</span>
+              </div>
+              <div class="delta-tag">you +0.023</div>
+            </td>
+            <td>
+              <div class="feat-list">
+                <span class="feat-item"><span class="dot dot-no"></span>UAE market</span>
+                <span class="feat-item"><span class="dot dot-no"></span>Basic preprocessing</span>
+              </div>
+            </td>
+            <td><span class="badge badge-win">You win</span></td>
+          </tr>
+
+          <!-- DIVIDER -->
+          <tr><td colspan="7" class="divider-label">Behavioral / non-comparable</td></tr>
+
+          <tr>
+            <td>
+              <div class="paper-name">Bhutto et al. 2022</div>
+              <div class="paper-meta">Eur. Business Review · 159 cit.</div>
+            </td>
+            <td class="muted">Survey (PK)</td>
+            <td class="muted">Survey</td>
+            <td class="muted">N/A — behavioral</td>
+            <td><span class="muted">—</span></td>
+            <td>
+              <div class="feat-list">
+                <span class="feat-item"><span class="dot dot-no"></span>Hybrid purchase intent</span>
+              </div>
+            </td>
+            <td><span class="badge badge-diff">Different field</span></td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="paper-name">Shakeel 2022</div>
+              <div class="paper-meta">Elsevier · 106 cit.</div>
+            </td>
+            <td class="muted">Survey (PK)</td>
+            <td class="muted">Survey</td>
+            <td class="muted">N/A — behavioral</td>
+            <td><span class="muted">—</span></td>
+            <td>
+              <div class="feat-list">
+                <span class="feat-item"><span class="dot dot-no"></span>EV adoption study</span>
+              </div>
+            </td>
+            <td><span class="badge badge-diff">Different field</span></td>
+          </tr>
+
+          <!-- YOUR ROW -->
+          <tr><td colspan="7" class="divider-label">Your work</td></tr>
+
+          <tr class="you-row">
+            <td>
+              <div class="paper-name" style="color:#4f8ef7;">Your research 2026</div>
+              <div class="paper-meta">Live PakWheels scrape</div>
+            </td>
+            <td class="muted">PakWheels<br>live</td>
+            <td style="font-weight:500;color:#4f8ef7;">60,396</td>
+            <td style="color:#4f8ef7;font-weight:500;font-size:13px;">LightGBM<br><span style="font-weight:400;font-size:11px;color:var(--muted);">14 models tested</span></td>
+            <td>
+              <div class="r2-row">
+                <div class="r2-bar-bg"><div class="r2-bar-fill" style="width:100%;background:#4f8ef7;"></div></div>
+                <span class="r2-num" style="color:#4f8ef7;font-weight:500;">0.973</span>
+              </div>
+            </td>
+            <td>
+              <div class="feat-list">
+                <span class="feat-item"><span class="dot dot-yes"></span>City tier</span>
+                <span class="feat-item"><span class="dot dot-yes"></span>Brand origin</span>
+                <span class="feat-item"><span class="dot dot-yes"></span>Trim tier + grade</span>
+                <span class="feat-item"><span class="dot dot-yes"></span>URL repair</span>
+              </div>
+            </td>
+            <td><span class="badge badge-you">Benchmark</span></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FEATURE HEATMAP -->
+  <div class="heatmap-section">
+    <div class="section-heading">Feature engineering depth</div>
+    <div class="chart-wrap">
+      <div class="chart-title">Which Pakistan-specific features each paper implemented</div>
+      <div class="chart-desc" style="margin-bottom:20px;">✓ present &nbsp;·&nbsp; ✗ absent &nbsp;·&nbsp; ~ partial</div>
+      <div class="heatmap-grid">
+        <!-- HEADERS -->
+        <div class="hm-head">Paper</div>
+        <div class="hm-head">City / location</div>
+        <div class="hm-head">Brand origin</div>
+        <div class="hm-head">Trim / variant</div>
+        <div class="hm-head">Log price target</div>
+        <div class="hm-head">Fresh scrape</div>
+
+        <!-- ROWS -->
+        <div class="hm-paper-label">Asghar 2021<span class="sub">PakJET</span></div>
+        <div class="hm-cell no">✗</div>
+        <div class="hm-cell no">✗</div>
+        <div class="hm-cell no">✗</div>
+        <div class="hm-cell no">✗</div>
+        <div class="hm-cell no">✗</div>
+
+        <div class="hm-paper-label">Ahtesham 2022<span class="sub">Springer</span></div>
+        <div class="hm-cell no">✗</div>
+        <div class="hm-cell no">✗</div>
+        <div class="hm-cell no">✗</div>
+        <div class="hm-cell no">✗</div>
+        <div class="hm-cell no">✗</div>
+
+        <div class="hm-paper-label">Farman 2025<span class="sub">Sir Syed</span></div>
+        <div class="hm-cell no">✗</div>
+        <div class="hm-cell no">✗</div>
+        <div class="hm-cell no">✗</div>
+        <div class="hm-cell partial">~</div>
+        <div class="hm-cell no">✗</div>
+
+        <div class="hm-paper-label">Fatima 2024<span class="sub">Spectrum</span></div>
+        <div class="hm-cell no">✗</div>
+        <div class="hm-cell no">✗</div>
+        <div class="hm-cell no">✗</div>
+        <div class="hm-cell no">✗</div>
+        <div class="hm-cell no">✗</div>
+
+        <div class="hm-paper-label">AlShared 2021<span class="sub">RIT Thesis</span></div>
+        <div class="hm-cell partial">~</div>
+        <div class="hm-cell no">✗</div>
+        <div class="hm-cell no">✗</div>
+        <div class="hm-cell no">✗</div>
+        <div class="hm-cell yes">✓</div>
+
+        <div class="hm-paper-label hm-row-you" style="color:#4f8ef7;font-weight:500;">Your work 2026<span class="sub" style="color:#888899;">benchmark</span></div>
+        <div class="hm-cell yes hm-row-you last-row">✓</div>
+        <div class="hm-cell yes hm-row-you last-row">✓</div>
+        <div class="hm-cell yes hm-row-you last-row">✓</div>
+        <div class="hm-cell yes hm-row-you last-row">✓</div>
+        <div class="hm-cell yes hm-row-you last-row">✓</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-tag">Pakistani Used Car Price Prediction · 2026</span>
+    <span class="footer-tag">LightGBM · R² 0.973 · 60,396 rows · PakWheels</span>
+  </footer>
+
+</div>
+
+<script>
+  const mono = "'DM Mono', monospace";
+  const textColor = '#888899';
+  const gridColor = 'rgba(255,255,255,0.05)';
+
+  Chart.defaults.color = textColor;
+  Chart.defaults.font.family = mono;
+  Chart.defaults.font.size = 11;
+
+  // R² BAR CHART
+  const r2Ctx = document.getElementById('r2Chart').getContext('2d');
+  new Chart(r2Ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Ahtesham\n2022', 'Asghar\n2021', 'AlShared\n2021', 'Farman\n2025', 'Your work\n2026'],
+      datasets: [{
+        data: [0.89, 0.90, 0.95, 0.96, 0.973],
+        backgroundColor: ['#1e3a5f','#1e3a5f','#1e3a5f','#1e3a5f','#4f8ef7'],
+        borderRadius: 6,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` R² = ${ctx.parsed.y.toFixed(3)}`
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: gridColor },
+          ticks: { color: textColor, font: { family: mono, size: 11 } }
+        },
+        y: {
+          min: 0.85,
+          max: 1.0,
+          grid: { color: gridColor },
+          ticks: {
+            color: textColor,
+            font: { family: mono, size: 11 },
+            callback: v => v.toFixed(2)
+          }
+        }
+      }
+    }
+  });
+
+  // DATASET SIZE CHART
+  const dsCtx = document.getElementById('datasetChart').getContext('2d');
+  new Chart(dsCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Asghar', 'Ahtesham', 'Your\nwork', 'Farman'],
+      datasets: [{
+        data: [56186, 56186, 60396, 140000],
+        backgroundColor: ['#1e3a5f','#1e3a5f','#4f8ef7','#1e3a5f'],
+        borderRadius: 5,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` ${ctx.parsed.y.toLocaleString()} rows`
+          }
+        }
+      },
+      scales: {
+        x: { grid: { color: gridColor }, ticks: { color: textColor, font: { family: mono, size: 10 } } },
+        y: {
+          grid: { color: gridColor },
+          ticks: { color: textColor, font: { family: mono, size: 10 }, callback: v => (v/1000).toFixed(0)+'k' }
+        }
+      }
+    }
+  });
+
+  // MODELS CHART
+  const mCtx = document.getElementById('modelsChart').getContext('2d');
+  new Chart(mCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Asghar', 'Ahtesham', 'AlShared', 'Farman', 'Your\nwork'],
+      datasets: [{
+        data: [1, 3, 3, 5, 14],
+        backgroundColor: ['#1e3a5f','#1e3a5f','#1e3a5f','#1e3a5f','#4f8ef7'],
+        borderRadius: 5,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` ${ctx.parsed.y} models`
+          }
+        }
+      },
+      scales: {
+        x: { grid: { color: gridColor }, ticks: { color: textColor, font: { family: mono, size: 10 } } },
+        y: {
+          grid: { color: gridColor },
+          ticks: { color: textColor, font: { family: mono, size: 10 } }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>
