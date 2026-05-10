@@ -95,9 +95,9 @@ ML regression app that estimates annual salaries based on education, experience,
 ---
 
 ### Breast Cancer Prediction
-[![Not Deployed Yet](https://img.shields.io/badge/Not_Deployed_Yet-9E9E9E?style=for-the-badge)](#)
+[![Open App](https://img.shields.io/badge/Open_App-FF5722?style=for-the-badge&logo=appveyor&logoColor=white)](https://onchoscan-breast-cancer-classification.streamlit.app/)
 
-Machine learning classification project for breast cancer diagnosis. This project is included in my portfolio, but the deployment link is intentionally omitted for now.
+Machine learning classification project for breast cancer diagnosis. Best model trained was **Lasso Regression** achieving : **Accuracy** . Deployed via Streamlit .
 
 ## My Socials
 
