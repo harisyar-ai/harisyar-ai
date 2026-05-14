@@ -28,15 +28,6 @@ When I'm not coding, you'll find me lost in a good book or experimenting with **
 
 ---
 
-## My Journey
-
-- Self-taught in Python, **Artificial Intelligence**, Deep Learning (**TensorFlow / Keras**), NLP, Computer Vision & Web Deployment
-- Building portfolio projects: Recommendation Systems, Price Predictors, Insurance Estimators & more
-- Currently diving deeper into advanced DL (Transformers, CNNs, GANs)
-- Creator of **Nova Books** — live NLP-powered book recommender
-
----
-
 ## Current Position
 
 - Student at **Agriculture University of Peshawar**, Pursuing Bachelor in Artificial Intelligence (2023–2027)
