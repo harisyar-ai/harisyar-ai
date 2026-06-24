@@ -22,9 +22,9 @@
 
 ## About Me
 
-Passionate **self-taught AI Engineer** building intelligent apps with **Artificial Intelligence**, **Deep Learning**, **NLP**, and **Digital Image Processing** — turning ideas into real-world tools.
+I'm an AI Engineer and Full-Stack Developer from Peshawar, Pakistan — currently pursuing a **BSc in Artificial Intelligence** (2023–2027) at Agriculture University Peshawar and working as a **Research Assistant** at the Digital Image Processing Lab, Islamia College Peshawar. I build things that actually work: a production MIS for KP government, ML research pipelines, and deployed Streamlit apps.
 
-When I'm not coding, you'll find me lost in a good book or experimenting with **TensorFlow**, **Keras**, and image processing projects.
+Authoring an ML research paper on Domain-Specific Feature Engineering for Pakistani used car price prediction, targeting **International Journal of Data Science and Analytics (IJDSA)**.
 
 ---
 
@@ -194,6 +194,30 @@ Multi-algorithm classification project for breast cancer diagnosis using clinica
 
 ![Profile Views](https://komarev.com/ghpvc/?username=harisyar-ai&style=for-the-badge)
 
+---
+---
+
+## Contribution Snake
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/harisyar-ai/harisyar-ai/output/github-contribution-grid-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/harisyar-ai/harisyar-ai/output/github-contribution-grid-snake.svg" />
+  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/harisyar-ai/harisyar-ai/output/github-contribution-grid-snake-dark.svg" />
+</picture>
+
+> Snake renders after the GitHub Action runs once — go to **Actions → Generate Contribution Snake → Run workflow** to trigger it manually.
+
+---
+
+## Currently Learning
+
+- Advanced SHAP interpretability and feature interaction analysis for the ESWA paper
+- Computer vision — CNNs, image segmentation, object detection at DIP Lab
+- NLP with Transformers (HuggingFace)
+- N8N workflow automation for GenAI pipelines
+- FastAPI for production ML model serving
+
+---
 ---
 
 ## My Socials
