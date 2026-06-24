@@ -195,19 +195,6 @@ Multi-algorithm classification project for breast cancer diagnosis using clinica
 ![Profile Views](https://komarev.com/ghpvc/?username=harisyar-ai&style=for-the-badge)
 
 ---
----
-
-## Contribution Snake
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/harisyar-ai/harisyar-ai/output/github-contribution-grid-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/harisyar-ai/harisyar-ai/output/github-contribution-grid-snake.svg" />
-  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/harisyar-ai/harisyar-ai/output/github-contribution-grid-snake-dark.svg" />
-</picture>
-
-> Snake renders after the GitHub Action runs once — go to **Actions → Generate Contribution Snake → Run workflow** to trigger it manually.
-
----
 
 ## Currently Learning
 
