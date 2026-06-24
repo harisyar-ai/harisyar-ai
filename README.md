@@ -173,6 +173,7 @@ Multi-algorithm classification project for breast cancer diagnosis using clinica
 </td>
 </tr>
 </table>
+
 ---
 
 ## GitHub Analytics
