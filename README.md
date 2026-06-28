@@ -116,7 +116,7 @@ Authoring an ML research paper on Domain-Specific Feature Engineering for Pakist
 
 Sole designer and developer of a production-grade multi-role MIS platform for Khyber Pakhtunkhwa local government, built in collaboration with JICA. Handles scheme scoring, multi-role auth, Excel ingestion, tehsil need lists, MTDP documents, and district-level budget planning across 7 districts and 19 tehsils.
 
-**Problem:** No unified digital platform for KP district development budget planning.<br/>
+**Problem:** No priortization engine to do rankings based on Real Governmental Criteria.<br/>
 **Stack:** Flask · PostgreSQL · Python · REST APIs · Railway<br/>
 **Insight:** AI prioritization engine reduced manual scheme-ranking effort to near zero.
 
