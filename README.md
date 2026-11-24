@@ -112,27 +112,68 @@ Authoring an ML research paper on Domain-Specific Feature Engineering for Pakist
 <tr>
 <td width="50%" valign="top">
 
-**IDBPM — District Planning MIS** &nbsp;`Gov / MIS`
+**IDBPM-KP — District Planning & Management System** &nbsp;`Gov / MIS`
 
-Sole designer and developer of a production-grade multi-role MIS platform for Khyber Pakhtunkhwa local government, built in collaboration with JICA. Handles scheme scoring, multi-role auth, Excel ingestion, tehsil need lists, MTDP documents, and district-level budget planning across 7 districts and 19 tehsils.
+Independently developed full-stack platform for local government planning in Khyber Pakhtunkhwa, featuring a rule-based smart prioritization engine that ranks development schemes on government criteria — and an integrated AI Assistant that answers staff questions directly from the live database. No manual searching; every answer comes from the data itself.
 
-**Problem:** No priortization engine to do rankings based on Real Governmental Criteria.<br/>
-**Stack:** Flask · PostgreSQL · Python · REST APIs · Railway<br/>
-**Insight:** AI prioritization engine reduced manual scheme-ranking effort to near zero.
+**Stack:** Flask · PostgreSQL · Groq LLM · Railway
 
 🔒 App & Repo locked — governmental confidentiality
 
 </td>
 <td width="50%" valign="top">
 
+**Restaurant Management & Ordering** &nbsp;`Full Stack`
+
+Complete restaurant platform — online ordering, menu management, automatic order tracking, dine-in POS, cash payments, admin dashboard, and thermal receipt printing. **Delivered to two restaurant clients** and running live in production.
+
+**Stack:** Django · PostgreSQL · JavaScript
+
+🔗 Live: [burgerbliss.pk](https://burgerbliss.pk/)
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+**WhatsApp Agent** &nbsp;`AI Agent`
+
+AI-powered WhatsApp agent **delivered to a restaurant client**, fully integrated with its live ordering system — customers ask questions and place orders over WhatsApp chat, and everything flows into the restaurant's own dashboard with automatic notifications to the owners.
+
+**Stack:** Django · WhatsApp Cloud API
+
+🔗 Live: [doughdai.pk](https://doughdai.pk/)
+
+</td>
+<td width="50%" valign="top">
+
+**Payment Verification** &nbsp;`FinTech`
+
+Automatic payment verification for online selling — the customer pays through the payment gateway, the system catches and verifies the gateway's own confirmation, and the order is marked paid only on the gateway's verified word. No screenshots, no manual proof, no fake-payment fraud.
+
+**Stack:** Django · PostgreSQL · JazzCash · Easypaisa · Safepay
+
+🔒 Private client system
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+**Pharmacy POS** &nbsp;`Desktop / POS`
+
+Offline-first point-of-sale system for pharmacies — medicine inventory with batch and expiry tracking, FEFO billing, customer credit (khata), purchases, expenses, and one-click backup and restore with in-app updates. Runs entirely on the shop's own computer, no internet needed.
+
+**Stack:** Django · SQLite · PyInstaller · Inno Setup
+
+</td>
+<td width="50%" valign="top">
+
 **Pakistani Car Price Predictor** &nbsp;`ML / Regression`
 
-End-to-end ML research pipeline on 58,750 PakWheels listings scraped April 2026. 13 models benchmarked; LightGBM best performer with R² = 0.9676. SHAP analysis identified `brand_model_generation` as dominant predictor (mean |SHAP| ≈ 0.31). Paper targeting ESWA.
+End-to-end ML research pipeline on real PakWheels listings — 13 models benchmarked, LightGBM the best performer, with SHAP explainability throughout. Research paper under review at Expert Systems with Applications.
 
-**Problem:** Prior studies used a stale 2020 Kaggle extract — no study used live PKR-era market data.<br/>
-**Dataset:** 58,750 listings · PakWheels scrape · April 2026<br/>
-**Stack:** LightGBM · Optuna · SHAP · Streamlit<br/>
-**Insight:** Generation-level feature engineering outperformed all conventional features in importance.
+**Stack:** LightGBM · SHAP · Scikit-Learn · Streamlit
 
 [![App](https://img.shields.io/badge/Live%20App-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](https://pakistani-car-price-predictor.streamlit.app/) [![Repo](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/harisyar-ai/pakistani-car-price-predictor)
 
@@ -143,31 +184,13 @@ End-to-end ML research pipeline on 58,750 PakWheels listings scraped April 2026.
 
 **Nova Books Recommender** &nbsp;`NLP / Recommender`
 
-Content-based book recommendation engine using TF-IDF and cosine similarity across 10,000+ books scraped from GoodReads. Deployed on Streamlit Community Cloud.
+Content-based book recommendation engine using TF-IDF and cosine similarity across 10,000+ books scraped from GoodReads.
 
-**Problem:** Generic search returns popularity-biased results, not semantic matches.<br/>
-**Dataset:** 10,000+ GoodReads listings<br/>
-**Stack:** Python · NLP · TF-IDF · Streamlit<br/>
-**Insight:** Cosine similarity on combined metadata fields outperformed title-only matching.
+**Stack:** Python · NLP · TF-IDF · Streamlit
 
 [![App](https://img.shields.io/badge/Live%20App-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](https://nova-books-recommender.streamlit.app/) [![Repo](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/harisyar-ai/nova-books-recommender)
 
 </td>
-<td width="50%" valign="top">
-
-**Breast Cancer Classification** &nbsp;`ML / Classification`
-
-Multi-algorithm classification project for breast cancer diagnosis using clinical features. 98.25% accuracy across seven algorithms.
-
-**Problem:** Which classical ML algorithm best separates malignant from benign tumors on the Wisconsin dataset?<br/>
-**Stack:** Scikit-Learn · Pandas · Streamlit<br/>
-**Insight:** Ensemble methods consistently outperformed single-estimator approaches by ≥ 2 percentage points.
-
-[![App](https://img.shields.io/badge/Live%20App-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](https://onchoscan-breast-cancer-classification.streamlit.app/) [![Repo](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/harisyar-ai/breast-cancer-classification)
-
-</td>
-</tr>
-<tr>
 <td width="50%" valign="top">
 
 </td>
