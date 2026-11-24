@@ -125,7 +125,7 @@ Independently developed full-stack platform for local government planning in Khy
 
 **Restaurant Management & Ordering** &nbsp;`Full Stack`
 
-Complete restaurant platform — online ordering, menu management, automatic order tracking, dine-in POS, cash payments, admin dashboard, and thermal receipt printing. **Delivered to two restaurant clients** and running live in production.
+Complete restaurant platform — online ordering, QR code ordering, order tracking, menu management, dine-in POS, cash payments, admin dashboard, and thermal receipt printing. **Delivered to two restaurant clients (Burger Bliss and Dough Dai)** and running live in production.
 
 **Stack:** Django · PostgreSQL · JavaScript
 
