@@ -2310,5 +2310,17 @@ document.addEventListener('keydown', function(e) {
   });
 })();
 </script>
+<style>
+  .wa-float { position: fixed; bottom: 22px; right: 22px; width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 29px; box-shadow: 0 6px 20px rgba(0,0,0,0.25); z-index: 999; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .wa-float:hover { transform: scale(1.08); box-shadow: 0 8px 24px rgba(0,0,0,0.3); color: #fff; }
+  .to-top { position: fixed; bottom: 90px; right: 29px; width: 42px; height: 42px; border-radius: 50%; background: #0a2d5e; color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; box-shadow: 0 6px 18px rgba(0,0,0,0.22); z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.25s ease, transform 0.2s ease; }
+  .to-top.show { opacity: 1; pointer-events: auto; }
+  .to-top:hover { transform: translateY(-2px); }
+</style>
+<a class="wa-float" href="https://wa.me/923232870355?text=Hello%20Haris!%20I%20saw%20your%20portfolio%20and%20I%27m%20interested%20in%20working%20with%20you%20on%20a%20project." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<button class="to-top" id="toTopBtn" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+<script>
+  (function(){ var b=document.getElementById('toTopBtn'); window.addEventListener('scroll', function(){ if(window.scrollY>400){ b.classList.add('show'); } else { b.classList.remove('show'); } }); b.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); }); })();
+</script>
 </body>
 </html>
